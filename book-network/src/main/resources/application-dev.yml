@@ -1,12 +1,12 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/the_academy
-    username: username
-    password: password
+    url: jdbc:postgresql://localhost:5432/book_social_network
+    username: anass
+    password: anass
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: false
     properties:
       hibernate:
@@ -16,8 +16,8 @@ spring:
   mail:
     host: localhost
     port: 1025
-    username: ali
-    password: ali
+    username: anass
+    password: anass
     properties:
       mail:
         smtp:
