@@ -1,6 +1,7 @@
 package com.anass.book.book;
 
 import com.anass.book.common.BaseEntity;
+import com.anass.book.feedback.Feedback;
 import com.anass.book.history.BookTransactionHistory;
 import com.anass.book.user.User;
 import jakarta.persistence.*;
@@ -38,9 +39,13 @@ public class Book extends BaseEntity {
     @Transient
     public double getRate() {
         if (feedbacks == null || feedbacks.isEmpty()) return 0.0;
-        return this.feedbacks.stream()
-                .mapToInt(Feedback::getNote)
+        var rate = this.feedbacks.stream()
+                .mapToDouble(Feedback::getNote)
                 .average()
                 .orElse(0.0);
+        double roundedRate = Math.round(rate * 10.0) / 10.0;
+
+        // Return 4.0 if roundedRate is less than 4.5, otherwise return 4.5
+        return roundedRate;
     }
 }

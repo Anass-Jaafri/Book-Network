@@ -1,5 +1,6 @@
 package com.anass.book.config;
 
+import com.anass.book.user.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;

@@ -13,9 +13,9 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @OpenAPIDefinition(
         info = @Info(
                 contact = @Contact(
-                        name = "Alibou",
-                        email = "contact@aliboucoding.com",
-                        url = "https://aliboucoding.com/course"
+                        name = "BookSocialNetwork",
+                        email = "contact@BookSocialNetwork.com",
+                        url = "https://BookSocialNetwork.com/"
                 ),
                 description = "OpenApi documentation for Spring Security",
                 title = "OpenApi specification - Book Network App",
@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
         servers = {
                 @Server(
                         description = "Local ENV",
-                        url = "http://localhost:8088"
+                        url = "http://localhost:8088/api/v1"
                 ),
                 @Server(
                         description = "PROD ENV",

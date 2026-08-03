@@ -9,7 +9,7 @@ import lombok.*;
 @Builder
 public class FeedbackResponse {
 
-    private Integer note;
+    private Double note;
     private String comment;
     private boolean ownFeedback;
 }
