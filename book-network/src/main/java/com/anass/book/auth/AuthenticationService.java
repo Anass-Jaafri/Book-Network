@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -78,7 +79,7 @@ public class AuthenticationService {
                 .orElseThrow(()-> new RuntimeException("Invalid token"));
         if(LocalDateTime.now().isAfter(savedToken.getExpiresAt())){
             sendValidationEmail(savedToken.getUser());
-            throw new RuntimeException("Activation token has expired. A new token has been send to the same email address");
+            throw new RuntimeException("Activation token has expired. A new token has been sent to the same email address");
         }
 
         var user = userRepository.findById(savedToken.getUser().getId())
@@ -92,7 +93,7 @@ public class AuthenticationService {
 
     private String generateAndSaveActivationToken(User user) {
         // Generate a token
-        String generatedToken = UUID.randomUUID().toString();
+        String generatedToken = generateActivationCode(6);
         var token = Token.builder()
                 .token(generatedToken)
                 .createdAt(LocalDateTime.now())
@@ -110,9 +111,22 @@ public class AuthenticationService {
                 user.getEmail(),
                 user.getFullName(),
                 EmailTemplateName.ACTIVATE_ACCOUNT,
-                String.format(activationUrl, newToken),
+                activationUrl,
+                newToken,
                 "Account activation"
         );
+    }
+
+    private String generateActivationCode(int length){
+        String characters = "0123456789";
+        StringBuilder codeBuilder = new StringBuilder();
+        SecureRandom secureRandom = new SecureRandom();
+         for (int i = 0; i < length; i++) {
+            int randomIndex = secureRandom.nextInt(characters.length());
+            codeBuilder.append(characters.charAt(randomIndex));
+        }
+
+        return codeBuilder.toString();
     }
 }
 

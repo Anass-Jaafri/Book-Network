@@ -47,9 +47,22 @@
           placeholder="Find a book"
           aria-label="Search"
         />
-        <button class="btn btn-outline-success" type="submit">
-          <i class="fas fa-search"></i>
-        </button>
+        <form class="d-flex gap-2 align-items-center" role="search">
+          <input
+            class="form-control"
+            type="search"
+            placeholder="Find a book"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+          <span>Welcome</span>
+          <span class="text-capitalize fw-bold">Anass</span>
+          <button class="btn btn-link" type="submit" (click)="logout()">
+            <i class="fas fa-door-open"></i>
+          </button>
+        </form>
       </form>
     </div>
   </div>

@@ -28,4 +28,4 @@ export function saveBook(http: HttpClient, rootUrl: string, params: SaveBook$Par
   );
 }
 
-saveBook.PATH = '/book';
+saveBook.PATH = '/books';

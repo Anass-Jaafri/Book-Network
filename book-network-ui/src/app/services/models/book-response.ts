@@ -2,7 +2,7 @@
 /* eslint-disable */
 export interface BookResponse {
   archived?: boolean;
-  author?: string;
+  authorName?: string;
   cover?: Array<string>;
   id?: number;
   isbn?: string;

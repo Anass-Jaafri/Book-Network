@@ -27,4 +27,4 @@ export function returnBorrowBook(http: HttpClient, rootUrl: string, params: Retu
   );
 }
 
-returnBorrowBook.PATH = '/book/borrow/return/{book-id}';
+returnBorrowBook.PATH = '/books/borrow/return/{book-id}';

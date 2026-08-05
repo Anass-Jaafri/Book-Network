@@ -33,4 +33,4 @@ export function uploadBookCoverPicture(http: HttpClient, rootUrl: string, params
   );
 }
 
-uploadBookCoverPicture.PATH = '/book/cover/{book-id}';
+uploadBookCoverPicture.PATH = '/books/cover/{book-id}';

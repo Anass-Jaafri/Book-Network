@@ -1,13 +1,13 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenApi specification - Book Network App",
+    "title": "OpenApi specification",
     "description": "OpenApi documentation for Spring Security",
     "termsOfService": "Terms of service",
     "contact": {
-      "name": "BookSocialNetwork",
-      "url": "https://BookSocialNetwork.com/",
-      "email": "contact@BookSocialNetwork.com"
+      "name": "Book Network",
+      "url": "https://Booknetwork.com",
+      "email": "contact@Booknetwork.com"
     },
     "license": {
       "name": "Licence name",
@@ -60,7 +60,7 @@
         }
       }
     },
-    "/book": {
+    "/books": {
       "get": {
         "tags": ["Book"],
         "operationId": "findAllBooks",
@@ -127,7 +127,7 @@
         }
       }
     },
-    "/book/cover/{book-id}": {
+    "/books/cover/{book-id}": {
       "post": {
         "tags": ["Book"],
         "operationId": "uploadBookCoverPicture",
@@ -172,7 +172,7 @@
         }
       }
     },
-    "/book/borrow/{book-id}": {
+    "/books/borrow/{book-id}": {
       "post": {
         "tags": ["Book"],
         "operationId": "borrowBook",
@@ -258,7 +258,7 @@
         }
       }
     },
-    "/book/shareable/{book-id}": {
+    "/books/shareable/{book-id}": {
       "patch": {
         "tags": ["Book"],
         "operationId": "updateShareableStatus",
@@ -288,7 +288,7 @@
         }
       }
     },
-    "/book/borrow/return/{book-id}": {
+    "/books/borrow/return/{book-id}": {
       "patch": {
         "tags": ["Book"],
         "operationId": "returnBorrowBook",
@@ -318,7 +318,7 @@
         }
       }
     },
-    "/book/borrow/return/approve/{book-id}": {
+    "/books/borrow/return/approve/{book-id}": {
       "patch": {
         "tags": ["Book"],
         "operationId": "approveReturnBorrowBook",
@@ -348,7 +348,7 @@
         }
       }
     },
-    "/book/archived/{book-id}": {
+    "/books/archived/{book-id}": {
       "patch": {
         "tags": ["Book"],
         "operationId": "updateArchivedStatus",
@@ -427,7 +427,7 @@
         }
       }
     },
-    "/book/{book-id}": {
+    "/books/{book-id}": {
       "get": {
         "tags": ["Book"],
         "operationId": "findBookById",
@@ -456,7 +456,7 @@
         }
       }
     },
-    "/book/returned": {
+    "/books/returned": {
       "get": {
         "tags": ["Book"],
         "operationId": "findAllReturnedBooks",
@@ -496,7 +496,7 @@
         }
       }
     },
-    "/book/owner": {
+    "/books/owner": {
       "get": {
         "tags": ["Book"],
         "operationId": "findAllBooksByOwner",
@@ -536,7 +536,7 @@
         }
       }
     },
-    "/book/borrowed": {
+    "/books/borrowed": {
       "get": {
         "tags": ["Book"],
         "operationId": "findAllBorrowedBooks",
@@ -575,6 +575,27 @@
           }
         }
       }
+    },
+    "/auth/activate-account": {
+      "get": {
+        "tags": ["Authentication"],
+        "operationId": "confirm",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -599,7 +620,7 @@
         }
       },
       "BookRequest": {
-        "required": ["author", "isbn", "synopsis", "title"],
+        "required": ["authorName", "isbn", "synopsis", "title"],
         "type": "object",
         "properties": {
           "id": {
@@ -609,7 +630,7 @@
           "title": {
             "type": "string"
           },
-          "author": {
+          "authorName": {
             "type": "string"
           },
           "isbn": {
@@ -723,7 +744,7 @@
           "title": {
             "type": "string"
           },
-          "author": {
+          "authorName": {
             "type": "string"
           },
           "isbn": {
@@ -742,15 +763,15 @@
               "format": "byte"
             }
           },
+          "rate": {
+            "type": "number",
+            "format": "double"
+          },
           "archived": {
             "type": "boolean"
           },
           "shareable": {
             "type": "boolean"
-          },
-          "rate": {
-            "type": "number",
-            "format": "double"
           }
         }
       },

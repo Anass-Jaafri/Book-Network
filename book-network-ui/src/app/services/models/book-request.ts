@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface BookRequest {
-  author: string;
+  authorName: string;
   id?: number;
   isbn: string;
   shareable?: boolean;
